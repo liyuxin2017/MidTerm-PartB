@@ -1,0 +1,23 @@
+	public int[] reverseEvenIndices(int[] nums) {
+		if (nums.length == 0)
+			return null;
+		int[] result = new int[nums.length];
+		int low = 0;
+		int high = nums.length - 1;
+		if (high % 2 == 1) {
+			result[high] = nums[high];
+			high--;
+		}
+		while (low <= high) {
+			if (low % 2 == 0) {
+				result[low] = nums[high];
+				result[high] = nums[low];
+			} else {
+				result[low] = nums[low];
+				result[high] = nums[high];
+			}
+			low++;
+			high--;
+		}
+		return result;
+	}
