@@ -1,1 +1,13 @@
+	public int countNumberOfPossibleWays(int m, int n, int x) {
+		return countNumberOfPossibleWays(m, n, x, 0, 0);
+	}
 
+	public static int countNumberOfPossibleWays(int m, int n, int x, int sum, int count) {
+		for (int i = 1; i <= m; i++) {
+			if (n == 1 && (sum + i) == x)
+				return count + 1;
+			if ((x - sum - i) >= (n - 1) && (x - sum - i) <= (n - 1) * m)
+				count = countNumberOfPossibleWays(m, n - 1, x, sum + i, count);
+		}
+		return count;
+	}
